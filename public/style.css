@@ -1,0 +1,64 @@
+td {
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 1.1em;
+}
+
+body {
+    display: grid;
+    grid-template-areas: 'left center right';
+    margin: 20px;
+}
+
+.center {
+    margin: auto;
+    /* background-color: bisque; */
+    grid-area: center;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.left {
+    /* background-color: lightgoldenrodyellow; */
+    grid-area: left;
+    width: 20vw;
+}
+
+.right {
+    /* background-color: darkkhaki; */
+    grid-area: right;
+    width: 20vw;
+}
+
+table {
+    margin: auto;
+}
+
+.dice {
+    padding-top: 20px;
+    margin: auto;
+}
+
+.dice img {
+    margin-right: 10px;
+}
+
+button {
+    font-size: 20px;
+    width: 20%;
+}
+
+#rollCount {
+    font-size: 1.1em;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+span {
+    border: solid .5px black;
+    border-radius: 2px;
+    padding: 2px 5px 2px 5px;
+}
