@@ -12,7 +12,7 @@ app.use('/', express.static(__dirname + '/public'));
 // "body parser" used for getting post
 // request, may be deprecated
 app.use(express.json());       
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 // define the database object
 let db = new sqlite3.Database('./data.db');
