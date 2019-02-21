@@ -143,8 +143,8 @@ function handleSimpleScore(n)
             
             simpleScoreCount++;
             
-            resetRoll();
-            
+            resetRoll();            
+
             if(isNaN(parseInt(subtotal.innerHTML)))
             {
                 subtotal.innerHTML = parseInt(score.innerHTML);
@@ -152,26 +152,6 @@ function handleSimpleScore(n)
             else
             {
                 subtotal.innerHTML = parseInt(subtotal.innerHTML) + parseInt(score.innerHTML);
-            }
-        }
-
-        // check for the bonus
-        if(simpleScoreCount == 6)
-        {
-            sum = 0;
-            
-            for(i=1; i<=6; i++)
-            {
-                sum += parseInt(document.getElementById("score"+i).innerHTML)
-            }
-            
-            if(sum > 62)
-            {
-                document.getElementById("bonus").innerHTML = "35";
-            }
-            else
-            {
-                document.getElementById("bonus").innerHTML = "0";
             }
         }
     }
@@ -241,6 +221,28 @@ function resetRoll()
     turnCount++;
 
     document.getElementById("rollCount").innerHTML = "roll again for next turn"
+
+    // check for the bonus
+    if(simpleScoreCount == 6)
+    {
+        console.log('doing the bouns');
+
+        sum = 0;
+        
+        for(i=1; i<=6; i++)
+        {
+            sum += parseInt(document.getElementById("score"+i).innerHTML)
+        }
+        
+        if(sum > 62)
+        {
+            document.getElementById("bonus").innerHTML = "35";
+        }
+        else
+        {
+            document.getElementById("bonus").innerHTML = "0";
+        }
+    }
 
     // this checks for end of game
     if(turnCount == 15 || (turnCount == 13 && yahtzeeCount == 1) || (turnCount == 14 && yahtzeeCount == 2))
