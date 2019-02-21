@@ -10,7 +10,7 @@
 
     <div class="left">
         <p>Keyboard shortcuts:</p>
-        <ul>
+        <ul id="shortcuts">
             <li><span>s</span> to start/restart</li>
             <li><span>r</span> or <span>space</span> to roll</li>
             <li><span>1</span>, <span>2</span>, <span>3</span>, <span>4</span>, <span>5</span> to hold dice</li>
@@ -104,9 +104,17 @@
     </div>
 
     <div class="right">
-        <ul>
-        <% scores.forEach( (score) => { %>
+        <p>All Time High Scores</p>
+        <ul id="all-time-list">
+        <% allTime.forEach( (score) => { %>
             <li><%= score.name %> - <%= score.score %></li>
+        <% }); %>
+        </ul>
+
+        <p>Monthly High Scores</p>
+        <ul id="recent-list">
+        <% recent.forEach( (score) => { %>
+            <li><%= score.name %> - <span><%= score.score %></span></li>
         <% }); %>
         </ul>
     </div>

@@ -71,7 +71,7 @@ function roll()
     if(game)
     {
         // only three rolls allowed
-        if(rollCount == 3)
+        if(rollCount == 10)
         {
             document.getElementById("rollCount").innerHTML = "Roll #" + rollCount + " -- out of rolls, choose a score category";
             return;        
@@ -84,7 +84,7 @@ function roll()
         {
             if(hold[i] == 0)
             {   
-                result = Math.floor(Math.random()*6)+1;
+                result = Math.floor(Math.random()*3)+1;
                 document.getElementById("spot"+(i+1)).src = "./images/dice" + result + ".jpg"
                 dice[i] = result;
             }
@@ -243,7 +243,7 @@ function resetRoll()
     document.getElementById("rollCount").innerHTML = "roll again for next turn"
 
     // this checks for end of game
-    if(turnCount == 15 || (turnCount == 13 && (!isYahtzee())))
+    if(turnCount == 15 || (turnCount == 13 && yahtzeeCount == 1) || (turnCount == 14 && yahtzeeCount == 2))
     {
         calcTotalScore();
     }
@@ -274,11 +274,7 @@ function handleFullHouse()
             {
                 document.getElementById("fullHouse").innerHTML = "0";
             }
-            resetRoll();
-
-            // blah!
-
-            
+            resetRoll();            
         }
     }
 }
@@ -398,7 +394,7 @@ function handleYahtzee(y)
                     resetRoll();
                 }
             }
-            else
+            else // bonus yahtzee clicked
             {
                 if(document.getElementById("yahtzee1").innerHTML == "50")
                 {
@@ -406,16 +402,10 @@ function handleYahtzee(y)
                     {
                         document.getElementById("yahtzee"+y).innerHTML = "100"; 
 
+                        yahtzeeCount++;
+
                         resetRoll();
                     }
-                    else
-                    {
-                        return;
-                    }
-                }
-                else
-                {
-                    return;
                 }
             }
         }
@@ -447,14 +437,23 @@ function calcTotalScore()
     
     // TODO only do this if they have top 10
 
-    save = confirm("Click OK to save your score, or hit cancel")
+    var recLength = document.getElementById("recent-list").getElementsByTagName("li").length;
+    var recLowest = parseInt(document.getElementById('recent-list').lastElementChild.firstElementChild.innerHTML);  
 
-    if(save)
+    if(recLength < 10 || sum > recLowest)
     {
-        saveScore();
+        save = confirm("You made the top 10 for this month!\n\nClick OK to save your score, or hit cancel")
+    
+        if(save)
+        {
+            saveScore();
+        }
     }
 
+
     document.getElementById("rollCount").innerHTML = "Game over";
+
+    game = false;
 } 
 
 function saveScore() 

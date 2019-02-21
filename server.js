@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // define the database object
 let db = new sqlite3.Database('./data.db');
 
-let selectSQL = `SELECT name, score, date FROM Score ORDER BY score DESC LIMIT 10;`;
+let selectSQL = `SELECT name, score, date FROM Score;`;
 
 // GET request for the page
 app.get('/', (req, res) => {
@@ -27,10 +27,16 @@ app.get('/', (req, res) => {
             throw err;
         }
 
-        // TODO: filter rows into highest of all time
-        // and highest of current month or something
+        d = new Date();
+        currentMonth = d.getFullYear() + "-" + (d.getMonth()+1);
 
-        res.render('index', {scores: rows});
+        allTime = [];
+        recent = [];
+
+        allTime = rows.sort( (a,b) => { return b.score - a.score } ).slice(0,10);
+        recent = rows.filter( (rec) => { if(rec.date.includes(currentMonth)) { return rec; } } ).slice(0,10);
+
+        res.render('index', {allTime: allTime, recent: recent});
         
     });
 });
@@ -42,7 +48,7 @@ app.post('/saveScore', (req, res) => {
     d = new Date()
     date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
         
-    let insertSQL = `INSERT INTO Score(name, score, date) VALUES('${req.body.name}', ${req.body.score}, ${date});`;
+    let insertSQL = `INSERT INTO Score(name, score, date) VALUES('${req.body.name}', ${req.body.score}, '${date}');`;
 
     db.run(insertSQL, [], (err) => {
         if(err) {
@@ -54,5 +60,5 @@ app.post('/saveScore', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`)
+    console.log(`Server listening on port ${port}!`)
 });

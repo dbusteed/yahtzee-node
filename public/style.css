@@ -53,11 +53,11 @@ button {
     font-size: 1.1em;
 }
 
-li {
+#shortcuts li {
     margin-bottom: 12px;
 }
 
-span {
+#shortcuts span {
     border: solid .5px black;
     border-radius: 2px;
     padding: 2px 5px 2px 5px;
