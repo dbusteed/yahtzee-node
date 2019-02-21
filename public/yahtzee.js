@@ -71,7 +71,7 @@ function roll()
     if(game)
     {
         // only three rolls allowed
-        if(rollCount == 10)
+        if(rollCount == 3)
         {
             document.getElementById("rollCount").innerHTML = "Roll #" + rollCount + " -- out of rolls, choose a score category";
             return;        
@@ -84,7 +84,7 @@ function roll()
         {
             if(hold[i] == 0)
             {   
-                result = Math.floor(Math.random()*3)+1;
+                result = Math.floor(Math.random()*6)+1;
                 document.getElementById("spot"+(i+1)).src = "./images/dice" + result + ".jpg"
                 dice[i] = result;
             }
