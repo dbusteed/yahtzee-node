@@ -18,18 +18,18 @@
     </div>
 
     <div class="center">
-        <button id="startButton" onclick="start();">Start</button>
-        <button id="rollButton" onclick="roll();" style="display: none;">Roll</button>
+        <button id="startButton" onclick="private.start();">Start</button>
+        <button id="rollButton" onclick="private.roll();" style="display: none;">Roll</button>
 
         <br>
         <br>
 
         <div class="dice">
-            <img id="spot1" onclick="holdDie(1);" src="">
-            <img id="spot2" onclick="holdDie(2);" src="">
-            <img id="spot3" onclick="holdDie(3);" src="">
-            <img id="spot4" onclick="holdDie(4);" src="">
-            <img id="spot5" onclick="holdDie(5);" src="">
+            <img id="spot1" onclick="private.holdDie(1);" src="">
+            <img id="spot2" onclick="private.holdDie(2);" src="">
+            <img id="spot3" onclick="private.holdDie(3);" src="">
+            <img id="spot4" onclick="private.holdDie(4);" src="">
+            <img id="spot5" onclick="private.holdDie(5);" src="">
         </div>
 
         <br>
@@ -45,57 +45,57 @@
             </tr>
             <tr>
                 <td>Ones</td>
-                <td id="score1" onclick="handleSimpleScore(1);"></td>
+                <td id="score1" onclick="private.handleSimpleScore(1);"></td>
                 <td>3 of a kind</td>
-                <td id="ofKind3" onclick="handleOfKind(3);"></td>
+                <td id="ofKind3" onclick="private.handleOfKind(3);"></td>
             </tr>
             <tr>
                 <td>Twos</td>
-                <td id="score2" onclick="handleSimpleScore(2);"></td>
+                <td id="score2" onclick="private.handleSimpleScore(2);"></td>
                 <td>4 of a kind</td>
-                <td id="ofKind4" onclick="handleOfKind(4);"></td>
+                <td id="ofKind4" onclick="private.handleOfKind(4);"></td>
             </tr>
             <tr>
                 <td>Threes</td>
-                <td id="score3" onclick="handleSimpleScore(3);"></td>
+                <td id="score3" onclick="private.handleSimpleScore(3);"></td>
                 <td>Full House</td>
-                <td id="fullHouse" onclick="handleFullHouse();"></td>
+                <td id="fullHouse" onclick="private.handleFullHouse();"></td>
             </tr>
             <tr>
                 <td>Fours</td>
-                <td id="score4" onclick="handleSimpleScore(4);"></td>
+                <td id="score4" onclick="private.handleSimpleScore(4);"></td>
                 <td>Sm. Straight</td>
-                <td id="straight4" onclick="handleStraight(4);"></td>
+                <td id="straight4" onclick="private.handleStraight(4);"></td>
             </tr>
             <tr>
                 <td>Fives</td>
-                <td id="score5" onclick="handleSimpleScore(5);"></td>
+                <td id="score5" onclick="private.handleSimpleScore(5);"></td>
                 <td>Lg. Straight</td>
-                <td id="straight5" onclick="handleStraight(5);"></td>
+                <td id="straight5" onclick="private.handleStraight(5);"></td>
             </tr>
             <tr>
                 <td>Sixes</td>
-                <td id="score6" onclick="handleSimpleScore(6);"></td>
+                <td id="score6" onclick="private.handleSimpleScore(6);"></td>
                 <td>Chance</td>
-                <td id="chance" onclick="handleChance();"></td>
+                <td id="chance" onclick="private.handleChance();"></td>
             </tr>
             <tr>
                 <td>Subtotal</td>
                 <td id="subtotal"></td>
                 <td>Yahtzee</td>
-                <td id="yahtzee1" onclick="handleYahtzee(1)"></td>
+                <td id="yahtzee1" onclick="private.handleYahtzee(1)"></td>
             </tr>
             <tr>
                 <td>Bonus (>62)</td>
                 <td id="bonus"></td>
                 <td>Bonus Yahtzee</td>
-                <td id="yahtzee2" onclick="handleYahtzee(2)"></td>
+                <td id="yahtzee2" onclick="private.handleYahtzee(2)"></td>
             </tr>
             <tr>
                 <td>Total score</td>
                 <td id="totalScore"></td>
                 <td>Bonus Yahtzee</td>
-                <td id="yahtzee3" onclick="handleYahtzee(3)"></td>
+                <td id="yahtzee3" onclick="private.handleYahtzee(3)"></td>
             </tr>
         </table>
 
